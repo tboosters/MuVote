@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Results</title>
+<style type="text/css">
+body {
+	background-color: #252838;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #FFF;
+	font-size: 32px;
+}
+#head {
+	font-size:32px;
+	color: #FFF;
+}
+#textbox {
+	height: 20px;
+	width: 200px;
+	font:Verdana;
+
+}
+#time {
+	font-size: 14px;
+	color: #CCC
+}
+#form {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 27px;
+}
+</style>
+<script type="text/javascript">
+	function pop() {
+		var email = document.form.email.value;
+		var pw = document.form.password.value;
+		
+		var email_check;
+			var at = email.indexOf("@");
+			var dot = email.lastIndexOf(".");
+			if(at<1 || dot <1 || email.length-dot<=2) {
+				alert("Please enter a valid e-mail(xxx@yyy.com)!");
+				location.reload();
+			}
+			else {
+				email_check = true;
+			};
+		
+		/*login*/
+		if (email_check = true) {
+			 if ((document.form.email.value == "test@test.com")&&(document.form.password.value == "test")) {
+					alert("Logged in! You will now be directed to the first page!");
+					top.location.assign("index1.html");
+				}
+			 else {
+				 	alert("Wrong E-mail or Password!");
+					location.reload();
+			 };
+		};
+	};
+
+</script>
+</head>
+
+<body>
+<br />
+<br />
+
+<center>
+<form id="form" name="form" method="post">
+<fieldset>
+  <legend id="head"><b>Results</b></legend>
+  
+  <p id="time">Last updated on: 15/1/2015 06:30:00 PM</p>
+  <table width="721" border="0">
+    <tr>
+      <td width="120" align="center">Male</td>
+      <td width="591" align="center"><img src="images/male.png" alt="Owen: 69% Yu: 31%" width="483" height="291" /></td>
+    </tr>
+    <tr>
+      <td align="center">Female</td>
+      <td align="center"><img src="images/female.png" alt="Yat Sam: 53% Siu Lai:47%" width="483" height="291" /></td>
+    </tr>
+    <tr>
+      <td align="center">Group</td>
+      <td align="center"><img src="images/group.png" alt="Titans: 63% SoM:37%" width="483" height="291" /></td>
+    </tr>
+</table>
+  <div id="hint"></div><br />
+</fieldset>
+</form>
+</center>
+<p>&nbsp;</p>
+
+</body>
+</html>

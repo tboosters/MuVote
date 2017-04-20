@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Vote</title>
+<style type="text/css">
+body {
+	background-color: #252838;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #FFF;
+	font-size: 32px;
+}
+#head {
+	font-size:32px;
+	color:#FFF;
+}
+
+#choice {
+	visibility:hidden;
+	position: absolute;
+}
+#choice:checked + img {
+	border: 3px solid #FFF;
+}
+#help {
+	font-color:#999;
+	font-size:14px;
+	text-align:center;
+}
+</style>
+
+
+<script type="text/javascript">
+function vt() {
+var male = document.form.male.value;
+var female = document.form.female.value;
+var group = document.form.group.value;
+
+//check if voter is human
+var cap = document.form.captcha.value;
+var cap_check = false;
+if(cap == "bijew") {
+	cap_check = true;
+}
+else {
+	alert("Please enter the correct captcha");
+};
+
+//check if the input is valid
+var all_input = false;
+if(cap_check) {
+	if(male.length > 0 && female.length > 0 && group.length > 0) {
+		all_input = true;
+	}
+	else {
+		alert("Please choose at least 1 for each group!");
+	};
+};
+
+//confirm and store the vote
+if(all_input && confirm("Do you confirm your vote?")) {
+	if(typeof(Storage) !== "undefined") {
+		window.localStorage.setItem("male",male);
+		window.localStorage.setItem("female",female);
+		window.localStorage.setItem("group",group);
+		alert("Your vote has been submitted! Thank you for your participation!");
+		alert("You can check your vote in the 'My Vote' section now");
+		window.location.assign("myvote.html");
+	}
+	else {
+		alert("Your browser doesn't support HTML5, please download the latest HTML5 broswer to proceed. (Google Chrome is recommended)");
+	};
+};
+};
+</script>
+</head>
+
+<body>
+<br />
+<br />
+
+<center>
+<form id="form" name="form" method="post">
+<fieldset><legend id="head"><b>Vote</b>  </legend>
+  <p id="help">(Click on the images to vote)</p>
+  <table width="828" border="0">
+    <tr>
+      <td colspan="2" bgcolor="#336699"><strong>Male</strong></td>
+    </tr>
+    <tr>
+      <td width="409" height="314" align="center"><label><input type="radio" id="choice" name="male" value="owen"/><img src="images/owen.png" width="400" /></label></td>
+      <td width="409" align="center"><label><input type="radio" id="choice" name="male" value="yu"/><img src="images/yu.PNG" width="400" /></label></td>
+    </tr>
+    <tr>
+    <td align="center">1. Owen - the Way Home</td>
+    <td align="center">2. Yu - Sound of China</td>
+    </tr>
+    <tr>
+    <td><p/></td>
+    </tr>
+    <tr>
+      <td colspan="2" bgcolor="#b0477b"><strong>Female</strong></td>
+    </tr>
+    <tr>
+      <td height="310" align="center"><label><input type="radio" id="choice" name="female" value="yatsam"/><img src="images/yatsam.png" width="400" /></label></td>
+      <td align="center"><label><input type="radio" id="choice" name="female" value="siulai" /><img src="images/siulai.png" width="400" /></label></td> 
+    </tr>
+        <tr>
+    <td align="center">1. Yat Sam - Forest</td>
+    <td align="center">2. Siu Lai - Flowers</td>
+    </tr>
+    <tr>
+    <td><p/></td>
+    </tr>
+    <tr>
+      <td colspan="2" bgcolor="#336600"><strong>Group</strong></td>
+    </tr>
+    
+    <tr>
+      <td height="310" align="center"><label><input type="radio" id="choice" name="group" value="titans" /><img src="images/titans.png" width="400" /></label></td>
+      <td align="center"><label><input type="radio" id="choice" name="group" value="som"/><img src="images/som.png" width="400" /></label></td> 
+      <tr>
+    <td align="center">1. Titans - Home</td>
+    <td align="center">2. SoM - PAD</td>
+    </tr>
+</table>
+  <p><img src="images/captcha.PNG" width="141" height="71" alt="bijew" align="center"/>&nbsp;&nbsp;&nbsp;
+    <input type="text" name="captcha" id="captcha" length="100"/>
+  </p>
+  <div id="help"><p>Please vote one for each group</p></div>
+  <p>
+    <input name="vote" type="button" id="vote" onClick="vt();" value="Vote">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="reset" value="Reset" onClick="">
+  </p>
+  <div id="test"></div>
+</fieldset>
+</form>
+</center>
+<p>&nbsp;</p>
+
+</body>
+</html>

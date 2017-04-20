@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Log-in</title>
+<style type="text/css">
+body {
+	background-color: #252838;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #FFF;
+	font-size: 32px;
+}
+#head {
+	font-size:32px;
+	color: #FFF;
+}
+#textbox {
+	height: 20px;
+	width: 200px;
+	font:Verdana;
+
+}
+#hint {
+	font-size: 12px;
+	color: #CCC
+}
+#form {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 27px;
+}
+</style>
+<script type="text/javascript">
+	function pop() {
+		var email = document.form.email.value;
+		var pw = document.form.password.value;
+		
+		var email_check = false;
+			var at = email.indexOf("@");
+			var dot = email.lastIndexOf(".");
+			if(at<1 || dot <1 || email.length-dot<=2) {
+				alert("Please enter a valid e-mail(xxx@yyy.com)!");
+				location.reload();
+			}
+			else {
+				email_check = true;
+			};
+			
+		
+		/*login*/
+		if (email_check) {
+			 if ((document.form.email.value == "test@test.com")&&(document.form.password.value == "test")) {
+					alert("Logged in! You will now be directed to the first page!");
+					top.location.assign("index1.html");
+				} else {
+				 	alert("Wrong E-mail or Password!");
+					location.reload();
+					
+			 };
+		};
+};
+	
+	function forget() {
+		if(prompt("Please enter your E-mail address") == "test@test.com") {
+			alert("An email has been sent to your E-mail box for verification. Please check your inbox");
+		}
+		else {
+			alert("We can't find any address that match yours");
+		}
+	};
+</script>
+</head>
+
+<body>
+<br />
+<br />
+
+<center>
+<form id="form" name="form" method="post">
+<fieldset><legend id="head"><b>Login</b></legend>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;<br />
+  </p>
+  <table width="188" border="0">
+    <tr>
+      <td>E-mail:&nbsp;</td>
+      <td><input id="email" type="email" name="email" /></td>
+    </tr>
+    <tr>
+      <td>Password: </td>
+      <td><input id="password" type="password" name="password" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <div id="hint"></div><br />
+   <input type="button" value="Login" onClick="pop();">
+   <input type="button" value="Forget Password" onclick="forget();" />
+</fieldset>
+</form>
+</center>
+<p>&nbsp;</p>
+
+</body>
+</html>

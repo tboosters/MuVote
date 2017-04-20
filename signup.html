@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Log-in</title>
+<style type="text/css">
+body {
+	background-color: #252838;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #FFF;
+	font-size: 32px;
+}
+#textbox {
+	height: 20px;
+	width: 200px;
+	font:Verdana;
+
+}
+#head {
+	font-size:32px;
+	color:#FFF;
+}
+#hint, a{
+	font-size: 12px;
+	color: #CCC
+}
+#form {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 27px;
+}
+
+</style>
+<script type="text/javascript">
+	function pop() {
+		var captcha = document.form.captcha.value;
+		var email = document.form.email.value;
+		var pw = document.form.password.value;
+		var repw = document.form.reenter.value;
+		
+		/* Terms and Conditions*/
+		var tac_check = false;
+		if(document.form.tac.checked){
+			tac_check = true;
+		}
+		else {
+			alert("Please accept the terms of use");
+			location.reload();
+		}
+		/*check captcha*/
+		var cap_check = false;
+		if(tac_check){
+			if(captcha == "bijew")	{
+				cap_check = true;
+			}
+			else {
+				alert("Wrong Captcha!");
+				location.reload();
+			};
+		};
+		
+		/*check email format*/
+		var email_check = false;
+		if (cap_check == true) {
+			var at = email.indexOf("@");
+			var dot = email.lastIndexOf(".");
+			if(at<1 || dot <1 || email.length-dot<=2) {
+				alert("Please enter a valid e-mail(xxx@yyy.com)!");
+				location.reload();
+			}
+			else {
+				email_check = true;
+			}
+		};
+		
+		/*repetition, password check and login*/
+		if(email_check == true) {
+			 if(email == "test@test.com") {
+					alert("Your E-mail has been taken!");
+					location.reload();
+				}
+			 else if((pw.length < 3) || pw !== repw) {
+				 	alert("The passwords don't match the requirements!");
+					location.reload();
+			 }
+			 	  else {
+			 		alert("Successfully signed up! " + "Your account e-mail: " + email + " " + "Your account password: " + pw);
+					alert("Please check your email box to confirm the registration! You will now be redirected to the homepage logged in.");
+					top.location.assign("index1.html")
+					
+			 	  };
+		};
+};
+</script>
+</head>
+
+<body>
+<br />
+<br />
+
+<center>
+<form id="form" name="form" method="post">
+<fieldset>
+  <legend id="head"><b>Sign Up</b>
+  </legend><p>&nbsp;&nbsp;&nbsp;&nbsp;<br />
+  </p>
+  <table width="451" border="0">
+    <tr>
+      <td width="271">E-mail:&nbsp;</td>
+      <td width="170"><input name="email" type="email" id="email" value="" /></td>
+    </tr>
+    <tr>
+      <td><p>Password:<br />(At least 4 characters)</td>
+      <td><input id="password" type="password" name="password" /></td>
+    </tr>
+    <tr>
+      <td>Confirm password:</td>
+      <td><input id="reenter" type="password" name="reenter" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p><center><img src="images/captcha.png" align="middle"/></center></p></td>
+      <td><input id="captcha" type="text" name="captcha" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><div id="hint">Please enter the words shown in the image to proceed</div></td>
+    </tr>
+  </table>
+  <div id="hint">
+    <input name="tac" type="checkbox" id="tac" value="check" />
+I agree all <a href="toc.html" target="_blank">terms of uses</a>.</div><br />
+   <input type="button" value="Sign Up" onClick="pop();">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="reset" name="reset" id="reset" value="Reset" />
+</fieldset>
+</form>
+</center>
+<p>&nbsp;</p>
+</body>
+</html>

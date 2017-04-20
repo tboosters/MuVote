@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Vote</title>
+<style type="text/css">
+body {
+	background-color: #252838;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #FFF;
+	font-size: 32px;
+}
+#head {
+	font-size:32px;
+	color:#FFF;
+}
+#choice:checked + img {
+	border: 3px solid #FFF;
+}
+#help {
+	font-color:#999;
+	font-size:14px;
+	text-align:center;
+}
+</style>
+<script type="text/javascript">
+function mv() {
+var male = localStorage.getItem("male");
+var female = localStorage.getItem("female");
+var group = localStorage.getItem("group");
+
+//male
+var mname;
+if(male=="owen"){
+	mname = "1. Owen - the Way Home";
+}
+else {
+	mname = "2. Yu - Sound of China";
+};
+document.getElementById("mp").innerHTML="<img src='images/" + male + ".png' width='400'/>";
+document.getElementById("mt").innerHTML=mname;
+
+//female
+var fname;
+if(female=="yatsam"){
+	fname = "1. Yat Sam - Forest";
+}
+else {
+	fname = "2. Siu Lai - Flowers";
+};
+document.getElementById("fp").innerHTML="<img src='images/" + female + ".png' width='400'/>";
+document.getElementById("ft").innerHTML=fname;
+
+//group
+var gname;
+if(group=="titans"){
+	gname = "1. Titans - Home";
+}
+else {
+	gname = "2. SoM - PAD";
+};
+document.getElementById("gp").innerHTML="<img src='images/" + group + ".png' width='400'/>";
+document.getElementById("gt").innerHTML=gname;
+};
+</script>
+</head>
+
+<body onLoad="mv();">
+<br />
+<br />
+
+<center>
+<form id="form" name="form" method="post">
+<fieldset>
+  <legend id="head"><b>My Vote</b>  </legend>
+  <table width="828" border="0">
+    <tr>
+      <td colspan="2" bgcolor="#336699"><strong>Male</strong></td>
+    </tr>
+    <tr>
+      <td width="409" height="314" align="center" id="mp"></td>
+      
+    </tr>
+    <tr>
+    <td align="center" id="mt">&nbsp;</td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" bgcolor="#b0477b"><strong>Female</strong></td>
+    </tr>
+    <tr>
+      <td height="310" align="center" id="fp"></td>
+    </tr>
+        <tr>
+    <td align="center" id="ft">&nbsp;</td>
+    </tr>
+    <tr>
+    <td><p/></td>
+    </tr>
+    <tr>
+      <td colspan="2" bgcolor="#336600"><strong>Group</strong></td>
+    </tr>
+    
+    <tr>
+      <td align="center" height="310" id="gp"></td>
+    </tr>
+      <tr>
+    <td align="center" id="gt">&nbsp;</td>
+    </tr>
+</table>
+  <div id="help">
+    <p>&nbsp;</p></div>
+  <p>
+    <input name="vote" type="button" id="vote" onClick="location.assign('vote.html');" value="I want to cast my vote gain">
+  </p>
+  <div id="test"></div>
+</fieldset>
+</form>
+</center>
+<p>&nbsp;</p>
+
+</body>
+</html>
